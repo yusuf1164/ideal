@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">More</a>
+                    <div class="dropdown-content">
+                        <a href="contact.html">Contact Us</a>
+                        <a href="about.html">About Us</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Login</h1>
+         <form id="loginForm">
+            <label for="login-id">ID or Name:</label>
+             <input type="text" id="login-id" name="login-id">
+
+             <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="login-password">
+
+            <div id="captcha-container">
+                <label for="captcha">Captcha:</label>
+                <input type="text" id="captcha" name="captcha" required>
+                <canvas id="captchaCanvas" width="100" height="50"></canvas>
+                <button type="button" onclick="generateCaptcha()">Refresh Captcha</button>
+            </div>
+            <input type="submit" value="Login">
+         </form>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <p>Email: info@example.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h2>About Us</h2>
+                <p>Our company is committed to providing the best services...</p>
+            </div>
+            <div class="footer-section">
+                <h2>Address</h2>
+                <p>1234 Main Street,<br> Anytown, USA</p>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

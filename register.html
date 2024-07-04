@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('hero-carousel-2.jpg'); /* Replace with your image path */
+            background-size: cover; /* Make sure the image covers the entire background */
+            background-position: right; /* Center the image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            height: 100%; /* Full viewport height */
+            
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: rgba(49, 9, 9, 0); /* Add a white background with transparency */
+            padding: 80px;
+            padding-bottom: 0;
+            border-radius: 10px;
+            box-shadow: 0 0 100px rgb(0, 0, 0);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+        .reg {
+            color: rgb(255, 255, 255);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const countrySelect = document.getElementById('country');
+            const stateSelect = document.getElementById('state');
+
+            // Fetch countries from API
+            fetch('https://countriesnow.space/api/v0.1/countries')
+                .then(response => response.json())
+                .then(data => {
+                    data.data.forEach(country => {
+                        const option = document.createElement('option');
+                        option.value = country.country;
+                        option.textContent = country.country;
+                        countrySelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching countries:', error));
+
+            // Fetch states based on selected country
+            countrySelect.addEventListener('change', function () {
+                const selectedCountry = countrySelect.value;
+                stateSelect.innerHTML = '';
+
+                // Find the country data from the previously fetched data
+                fetch('https://countriesnow.space/api/v0.1/countries')
+                    .then(response => response.json())
+                    .then(data => {
+                        const countryData = data.data.find(country => country.country === selectedCountry);
+                        if (countryData && countryData.cities) {
+                            countryData.cities.forEach(state => {
+                                const option = document.createElement('option');
+                                option.value = state;
+                                option.textContent = state;
+                                stateSelect.appendChild(option);
+                            });
+                        }
+                    })
+                    .catch(error => console.error('Error fetching states:', error));
+            });
+        });
+    </script>
+</head>
+<link rel="stylesheet" href="styles.css">
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">More</a>
+                    <div class="dropdown-content">
+                        <a href="contact.html">Contact Us</a>
+                        <a href="about.html">About Us</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container mt-12">
+        <h2 class="reg"><b>Register</b></h2>
+        <form action="register.php" method="post">
+            <div class="row">
+                <!-- ID Field (Readonly) -->
+                <div class="col-md-4 mb-3">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" readonly>
+                </div>
+                <!-- Name Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <!-- Country Dropdown -->
+                <div class="col-md-4 mb-3">
+                    <label for="country">Country</label>
+                    <select class="form-control" id="country" name="country" required>
+                        <option value="" disabled selected>Select Country</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <!-- State Dropdown -->
+                <div class="col-md-4 mb-3">
+                    <label for="state">State</label>
+                    <select class="form-control" id="state" name="state" required>
+                        <option value="" disabled selected>Select State</option>
+                    </select>
+                </div>
+                <!-- Date of Birth Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" name="dob" required>
+                </div>
+                <!-- Phone Number Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Email Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <!-- Password Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <!-- Confirm Password Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Address Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                </div>
+                <!-- Position Field -->
+                <div class="col-md-4 mb-3">
+                    <label for="position">Position</label>
+                    <input type="text" class="form-control" id="position" name="position" required>
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary" >Submit</button>
+            <div class="col-md-4 mb-3"> Already have an account 
+                <a href="login.html">Login</a> here
+            </div>
+        </form>
+    </div>
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
