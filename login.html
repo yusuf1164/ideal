@@ -3,61 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login - DEEN Hospital</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">More</a>
-                    <div class="dropdown-content">
-                        <a href="contact.html">Contact Us</a>
-                        <a href="about.html">About Us</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
+
+    <!-- Dynamic Header Placeholder -->
+    <header id="header-placeholder"></header>
+
+    <!-- Main Content (Login Form) -->
     <main>
-        <h1>Login</h1>
-         <form id="loginForm">
-            <label for="login-id">ID or Name:</label>
-             <input type="text" id="login-id" name="login-id">
+        <div class="form-container">
+            <h2>Patient Portal Login</h2>
+            <p>Access your medical records and appointments.</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+                <div class="form-options">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-submit">Sign In</button>
+            </form>
 
-             <label for="login-password">Password:</label>
-            <input type="password" id="login-password" name="login-password">
-
-            <div id="captcha-container">
-                <label for="captcha">Captcha:</label>
-                <input type="text" id="captcha" name="captcha" required>
-                <canvas id="captchaCanvas" width="100" height="50"></canvas>
-                <button type="button" onclick="generateCaptcha()">Refresh Captcha</button>
-            </div>
-            <input type="submit" value="Login">
-         </form>
-    </main>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h2>Contact Us</h2>
-                <p>Email: info@example.com</p>
-                <p>Phone: (123) 456-7890</p>
-            </div>
-            <div class="footer-section">
-                <h2>About Us</h2>
-                <p>Our company is committed to providing the best services...</p>
-            </div>
-            <div class="footer-section">
-                <h2>Address</h2>
-                <p>1234 Main Street,<br> Anytown, USA</p>
+            <div class="form-footer">
+                Don't have an account? <a href="register.html">Register here</a>
             </div>
         </div>
-    </footer>
-    <script src="scripts.js"></script>
+    </main>
+
+    <!-- Dynamic Footer Placeholder -->
+    <footer id="footer-placeholder"></footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
